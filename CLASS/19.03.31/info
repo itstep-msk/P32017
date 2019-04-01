@@ -1,0 +1,12 @@
+themeforest.net
+
+@print {
+	.header {
+		display: none;
+	}
+	.name {
+		font-size: 40px;
+	}
+}
+
+Ссылка на макет: https://themeforest.net/item/moderncv-personal-resume-template/20354628?s_rank=1

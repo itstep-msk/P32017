@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Font</title>
+</head>
+<body>
+	
+<style>
+	@font-face {
+		src: url("OpenSans-Regular.ttf");
+		font-family: "myOpenSans";
+	}
+
+	.bird {
+		font-family: "myOpenSans";
+		color: red;
+		text-transform: uppercase;
+		text-decoration: underline;
+		font-style: italic;
+		font-weight: bold;
+		opacity: 0.5;
+		letter-spacing: 10px;
+		line-height: 50px;
+		text-shadow:  1px 1px 3px  black;
+	}
+	/*
+	Devtools -> Elements -> Computed -> Rendered Fonts
+	*/
+</style>
+
+<div class="bird">Bird</div>
+<div class="rat">Rat</div>
+
+</body>
+</html>

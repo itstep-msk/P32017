@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Position</title>
+</head>
+<body>
+
+<style>
+	.tiger {
+		width: 100px;
+		height: 100px;
+		background: orange;
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		z-index: 10;
+		/* z-index от - 9999 до 9999 */
+	}
+	.cat {
+		width: 150px;
+		height: 150px;
+		background: grey;
+		border: 1px solid red;
+		box-sizing: border-box;
+	}
+	.rabbit {
+		width: 400px;
+		height: 400px;
+		margin-left: 100px;
+		margin-top: 100px;
+		background: yellow;
+		position: relative;
+	}
+	.dog {
+		width: 100px;
+		height: 100px;
+		background: brown;
+		position: absolute;
+		left: 20px;
+		top: 20px;
+	}
+	.elpy {
+		width: 150px;
+		height: 150px;
+		background: yellow;
+		border: 1px solid red;
+		box-sizing: border-box;
+	}
+	.fixed {
+		width: 100%;
+		height: 50px;
+		background: purple;
+		position: fixed;
+		top: 0;
+	}
+</style>	
+
+<div class="tiger"></div>
+<div class="cat"></div>
+<div class="elpy"></div>
+<div class="cat"></div>
+
+<div class="rabbit">
+	<div class="dog"></div>
+</div>
+
+<div class="fixed"></div>
+
+</body>
+</html>

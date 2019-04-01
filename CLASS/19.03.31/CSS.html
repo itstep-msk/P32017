@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<style>
+		.apple {
+			color: yellow;
+		}
+	</style>
+
+	<div style="background: orange" class="apple">Apple</div>
+
+	<!-- BLOCK-INLINE -->
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+	<style>
+		.orange {
+			background: orange;
+		}
+		
+		.plum {
+			background: purple;
+			color: white;
+			display: inline-block;
+		}
+	</style>
+	<div class="orange">Апельсин</div>
+	<div class="orange">Апельсин</div>
+	<div class="plum">Слива</div>
+	<div class="plum">Еще одна слива</div>
+	<br><br><br><br><br><br><br><br><br><br>
+
+	<!-- Site header -->
+	<style>
+		.logo {
+			width: 100px;
+			height: 100px;
+			background: orange;
+			display: inline-block;
+		}
+		.search {
+			width: calc(100% - 200px);
+			height: 100px;
+			background: yellow;
+			display: inline-block;
+			margin-left: -4px;
+		}
+		.contacts {
+			width: 100px;
+			height: 100px;
+			background: purple;
+			display: inline-block;
+			margin-left: -4px;
+		}
+	</style>
+
+	<div class="logo"></div>
+	<div class="search"></div>
+	<div class="contacts"></div>
+	
+	<br><br><br><br><br><br><br><br><br><br>
+	<!-- Margin, padding (внешнии и внутреннии отступы) -->
+	
+	<style>
+		.bmw {
+			width: 100px;
+			height: 100px;
+			background: grey;
+			color: white;
+			display: inline-block;
+		    margin: 10px 20px 30px 40px;
+		    /*
+			margin-top: 10px;
+			margin-right: 20px;
+			margin-bottom: 30px;
+			margin-left: 40px;
+		    */
+		    padding: 50px;
+		    /*
+			box-sizing: border-box - делает пересчет велечин. Padding и border не дают увеличения блока
+		    */
+		   	border: 5px solid red;
+    		box-sizing: border-box;
+		}
+	</style>
+	<div class="bmw">bmw</div>
+	<div class="bmw">bmw</div>
+	<div class="bmw">bmw</div>
+
+	<br><br><br><br><br><br><br><br><br><br>
+	<!--  -->
+
+</body>
+</html>
