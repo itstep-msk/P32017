@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Псевдо селекторы</title>
+</head>
+<body>
+	<style>
+		.apple {
+			background: green;
+			width: 200px;
+			height: 20px;
+			border: 1px solid red;
+			transition: all, 1s;
+			/*
+			Плавный переход от одного состояние в другое
+			transition: background 1s, color 2s;
+			*/
+		}
+		.apple:last-child {
+			background: yellow;
+		}
+		.apple:first-child {
+			background: yellow;
+		}
+		.apple:nth-child(2) {
+			background: purple
+		}
+		.apple:hover {
+			background: brown;
+			width: 300px;
+			height: 50px;
+		}
+		.apple:last-child:hover {
+			background: ivory;
+		}
+		.apple::selection {
+			color: red;
+			background: orange;
+		}
+		/*
+		.apple:nth-child(odd) {	нечетные }
+		.apple:nth-child(even) { четные }
+		*/
+	</style>
+	<div>
+		<div class="apple">Яблоко</div>
+		<div class="apple">Яблоко</div>
+		<div class="apple">Яблоко</div>
+		<div class="apple">Яблоко</div>
+		<div class="apple">Яблоко</div>
+	</div>
+	<br><br><br><br><br><br>
+	<!-- AFTER BEFORE -->
+	<style>
+		.rabbit {
+			width: 100px;
+			height: 100px;
+			background: yellow;
+		}
+		.duck {
+			width: 50px;
+			height: 50px;
+			background: orange;
+		}
+		.dog {
+			width: 100px;
+			height: 100px;
+			background: yellow;
+		}
+		.dog:after {
+			content: "duck";
+			display: block;
+			width: 50px;
+			height: 50px;
+			background: orange;
+		}
+		.bird:after {
+			content: "--->>>";
+		}
+		.bird:before {
+			content: "<<<---";
+		}
+	</style>
+
+	<div class="rabbit">
+		<div class="duck">duck</div>
+	</div>
+	<br>
+	<div class="dog"></div>
+	
+	<div class="bird">BIRD</div>
+	<div class="bird">CAR</div>
+	<br><br><br><br><br><br><br>
+</body>
+</html>

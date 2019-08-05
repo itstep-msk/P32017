@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Media</title>
+</head>
+<body>
+	<style>
+		.apple {
+			width: 1000px;
+			height: 300px;
+			background: orange;
+			transition: all, .25s;
+		}
+		/*
+		max-width от 0 до указанного
+		min-width от указанного до бесконечности
+		*/
+		@media (max-width: 1000px) {
+			.apple {
+				background: green;
+			}
+		}
+		@media (max-width: 700px) {
+			.apple {
+				width: 300px;
+				border: 5px solid red;
+			}
+		}
+	</style>
+	<div class="apple"></div>
+</body>
+</html>

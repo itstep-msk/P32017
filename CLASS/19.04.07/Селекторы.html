@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Селекторы</title>
+</head>
+<body>
+
+<style>
+	.orange {
+		background: green;
+	}
+	.apple .orange {
+		background: yellow;
+	}
+	.apple + .orange {
+		letter-spacing: 10px;
+	}
+	.orange.plum {
+		background: purple;
+	}
+	.apple, .orange, .orange.plum {
+		font-style: italic;
+	}
+	* {
+		color: red;
+	}
+	* {
+		color: grey;
+	}
+
+	/*
+	div.apple {}
+	.apple {}
+	*/
+	div.apple {
+		color: orange;
+	}
+	.apple {
+		color: purple !important;
+	}
+</style>
+
+<div class="apple">apple</div>
+<div class="orange">orange green</div>
+
+<div class="apple">
+	<div class="orange">orange yellow</div>
+</div>
+
+<div class="orange plum">orange and plum</div>
+
+	
+</body>
+</html>

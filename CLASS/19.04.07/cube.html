@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Cube</title>
+</head>
+<body>
+	<style>
+		/*
+		@print {
+			.apple {
+				font-size: 100px;
+			}
+		}
+		@media {
+			
+		}
+		@font-face {
+			src: url();
+			font-family: "myFont";
+		}
+		body {
+			font-family: "myFont";
+		}
+		*/
+
+		body {
+			perspective: 1000px;
+		}
+		.cube {
+			width: 200px;
+			height: 200px;
+			margin: 50px auto;
+			position: relative;
+			transform-style: preserve-3d;
+			animation: moveCube 1s linear infinite;
+		}
+		.side {
+			width: 100%;
+   			height: 100%;
+   			opacity: 0.5;
+   			position: absolute;
+		}
+		.left {
+			background: red;	
+    		transform: translateX(-100px) rotateY(-90deg);
+		}
+		.right {
+			background: orange;
+			transform: translateX(100px) rotateY(-90deg);
+		}
+		.top {
+			background: yellow;
+			transform: translateY(-100px) rotateX(90deg);
+		}
+		.bottom {
+			background: blue;
+			transform: translateY(100px) rotateX(90deg);
+		}
+		.back {
+			background: green;
+			transform: translateZ(-100px);
+		}
+		.front {
+			background: purple;
+			transform: translateZ(100px);
+		}
+
+		@keyframes moveCube{
+			0% {
+				transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+			}
+			100% {
+				transform: rotateX(360deg) rotateY(360deg) rotateZ(360deg);
+			}
+		}
+	</style>
+	<div class="cube">
+		<div class="side left"></div>
+		<div class="side right"></div>
+		<div class="side top"></div>
+		<div class="side bottom"></div>
+		<div class="side front"></div>
+		<div class="side back"></div>
+	</div>
+</body>
+</html>

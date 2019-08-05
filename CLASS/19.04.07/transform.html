@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Трансформация</title>
+</head>
+<body>
+	<style>
+		.melon, .watermelon, .cherry, .carrot, .apple {
+			width: 100px;
+			height: 100px;
+			display: inline-block;
+			transition: all, .25s;
+		}
+		.melon { background: orange; }
+		.watermelon { background: pink;	}
+		.cherry { background: red; }
+		.carrot { background: purple; }
+		.apple { background: green;	}
+
+		.melon:hover { transform: rotateZ(360deg) }
+		.watermelon:hover { transform: scale(1.5); }
+		.cherry:hover { transform: skewX(50deg);  }
+		.carrot:hover { transform: translate(20px, 20px); }
+
+		.section {
+			perspective: 100px;
+		}
+		.earth {
+			width: 100px;
+			height: 100px;
+			background: blue;
+			transition: all, 1s;
+			margin: 0 auto;
+		}
+		.earth:hover {
+			transform: rotateX(360deg);
+		}
+	</style>
+
+	<div class="melon"></div>
+	<div class="watermelon"></div>
+	<div class="cherry"></div>
+	<div class="carrot"></div>
+	<div class="apple"></div>
+
+	<div class="section">
+		<div class="earth"></div>
+	</div>
+</body>
+</html>
