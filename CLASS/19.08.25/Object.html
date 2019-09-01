@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object</title>
+</head>
+<body>
+
+<script>
+	var fruits = {
+		count: 10,
+		getCount: function() {
+			console.log(this.count);
+			//return this.count;
+		}
+	}
+
+	var vegetables = {
+		count: 20,
+		getCount: function() {
+			console.log(this.count);
+			//return this.count;
+		}
+	}
+	fruits.getCount(); // getCount(1,2,3)
+	fruits.getCount.call(vegetables); // .call(vegetables, 1,2,3);
+	fruits.getCount.apply(vegetables); // .apply(vegetables, [1,2,3]);
+	fruits.getCount.bind(vegetables)();
+
+	setTimeout(fruits.getCount.bind(fruits), 1000);
+	//console.log(fruits.getCount()) // 10
+	//console.log(fruits.getCount.call(vegetables)) // 20
+	// apple()
+	// apple.call()
+
+	console.log(Math.max(1,2,3,4,5)) // 5
+	console.log(Math.max.apply(Math, [1,2,3,4,5])) // 5
+
+
+	// Преобразовнае объектов
+
+	var bank = {
+		cash: 100
+	}
+
+	//alert(bank); // [object Object]
+	console.log(bank.toString()) // [object Object]
+	// toString ищет свойство [[Class]]
+	console.log(Object.prototype.toString.call([1,2,3])); // [object Array]
+</script>
+
+</body>
+</html>

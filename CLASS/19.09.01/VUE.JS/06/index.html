@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js</title>
+</head>
+<body>
+
+<div id="app">
+	<div>{{ message }}</div>
+	<input type="text" v-model="message">
+	<div>{{ count }}</div>
+	<div>{{ count * 2 }}</div>
+	<div>{{ count * 3 }}</div>
+	<input type="range" v-model="count">
+	<input type="range" v-model="count * 0.5">
+	<input type="range" v-model="count * 0.25">
+</div>
+
+<script src="vue.min.js"></script>
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			message: "123456789",
+			count: 10
+		}
+	})
+</script>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ООП Классы</title>
+</head>
+<body>
+
+<script>
+	// function Animals(type) {
+	// 	this.type = type;
+	// }
+
+	// Animals.prototype.run = function() { return "run..." }
+	
+	class Animals {
+		constructor(type) {
+			this.type = type;
+		}
+
+		run() {
+			return "run..."
+		}
+	}
+
+	class Rabbit extends Animals {
+		constructor(type, color) {
+			super(type)
+			this._color = color;
+		}
+		jump() {
+			return "jump...";
+		}
+		get color() {
+			return this._color;
+		}
+		set color(value) {
+			this._color = value;
+		}
+	}
+
+	var rabbit = new Rabbit("rabbit", "white");
+
+	console.log(rabbit);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+<script>
+	var cars = {
+		bmw: 10,
+		audi: 20
+	}
+
+	Object.defineProperty(cars, "bmw", {
+		configurable: false, // защита от удаления
+		enumerable: false, // скрыть при переборе черзе цикл
+		writable: false // защита от перезаписи
+	})
+
+	for(car in cars) {
+		//console.log(car) // audi
+	}
+
+	var colors = {
+		yellow: null,
+		_yellow: 10,
+		orange: 20
+	}
+
+	Object.defineProperty(colors, "yellow", {
+		get: function() {
+			return this["_yellow"];
+		},
+		set: function(value) {
+			this["_yellow"] = value;
+		}
+	})
+
+	console.log(colors.yellow) // 10
+	colors.yellow = 20
+	console.log(colors.yellow) // 20
+	console.log(colors)
+</script>
+
+</body>
+</html>

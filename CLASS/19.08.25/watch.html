@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>watch</title>
+</head>
+<body>
+
+<script>
+	var cars = {
+		bwm: 10,
+		audi: 20
+	}
+
+	function watch(obj, fn) {
+		for(key in obj) {
+			obj["_" + key] = obj[key];
+
+			Object.defineProperty(obj, "_" + key, {
+				enumerable: false
+			})
+
+			function saveKey(keyArg) {
+				Object.defineProperty(obj, keyArg, {
+					get: function() {
+						return this["_" + keyArg];
+					},
+					set: function(value) {
+						this["_" + keyArg] = value;
+						fn(keyArg);
+					}
+				})
+			}
+
+			saveKey(key);
+		}
+	}
+
+	watch(cars, callbackWatch);
+
+	function callbackWatch(key) {
+		console.log("watch property...")
+		console.log("новое значение для: " + key + ": " + cars[key]);
+	}
+</script>
+
+</body>
+</html>

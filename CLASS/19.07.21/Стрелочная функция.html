@@ -1,0 +1,13 @@
+<script>
+	var calc = {
+		a: 10,
+		b: 20,
+		old: function() {
+			return this.a + this.b
+		},
+		new: () => this.a  + this.b
+	}
+
+	var cars = ["bmw", "audi", "daewoo"]
+	cars = cars.map(i => i.toUpperCase());
+</script>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Checklist</title>
+</head>
+<body>
+
+<input type="text" class="text">
+<input type="submit" class="button" value="Добавить">
+<div class="list"></div>
+
+<script>
+	var text = document.querySelector(".text");
+	var button = document.querySelector(".button");
+	var list = document.querySelector(".list");
+	var storage = new Storage();
+
+	window.addEventListener("load", function() {
+		storage.loadData();
+		storage.showData();
+	})
+
+	button.addEventListener("click", function() {
+		storage.addData(new Task(text.value));
+		storage.saveData();
+		storage.loadData();
+		storage.showData();
+		text.value = "";
+	});
+
+	function Task(task) {
+		this.task = task;
+		this.date = new Date();
+	}
+
+	function Storage() {
+		this.storage = [];
+	}
+
+	Storage.prototype.addData = function(value) {
+		this.storage.push(value);
+	}
+
+	Storage.prototype.getData = function() {
+		return this.storage;
+	}
+
+	Storage.prototype.saveData = function() {
+		var data = JSON.stringify(this.storage);
+
+		localStorage.checklist = data;
+	}
+
+	Storage.prototype.loadData = function() {
+		if(localStorage.checklist) {
+			this.storage = JSON.parse(localStorage.checklist);
+		}
+	}
+
+	Storage.prototype.showData = function() {
+		list.innerHTML = "";
+
+		this.storage.forEach(function(task) {
+			list.innerHTML += task.task + "<br>";
+		})
+	}
+</script>
+
+</body>
+</html>

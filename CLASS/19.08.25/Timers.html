@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Timers</title>
+</head>
+<body>
+
+<script>
+	var interval = setInterval(function () {
+ 		//console.log("setInterval");
+	}, 1000);
+	// setInterval(Функция, время);
+	// clearInterval(interval); 
+	var timer = setTimeout(function tick() {
+ 		//console.log("setTimeout");
+ 		setTimeout(tick, 1000);
+	}, 1000);
+
+	/*
+	function setTimeout(fn, time) {
+		fn();
+	}
+	*/
+
+	function apple() {
+		console.log("apple")
+	}
+
+	setInterval(apple, 1000);
+	//apple = function apple() {console.log("apple")}
+	// setInterval(function apple() {console.log("apple")}, 1000)
+</script>
+
+</body>
+</html>

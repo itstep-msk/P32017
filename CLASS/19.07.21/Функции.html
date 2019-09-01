@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Функции</title>
+</head>
+<body>
+
+<!-- <script src="main.js"></script> -->
+<script>
+	// console.log(a) // undefined
+	// var a = 5;
+	// console.log(a) // 5
+
+	//apple(); // ошибка
+	// Функциональное выражение
+	var apple = function() {
+
+	}
+
+	// orange() - все ок
+	// Декларированная функция
+	function orange() {
+
+	}
+	var globalApple = 100;
+	function greeting(name) {
+		var localApple = 10;
+		var plum = name || "user";
+		//console.log(globalApple) // 100
+		if(name == undefined) {
+			return "Введите имя...";
+		} else {
+			return "Hello " + name;
+		}
+		//return `Hello ${name}`;
+	}
+	// console.log(localApple) // ReferenceError
+	console.log(greeting("Alex")); // Hello Alex
+	console.log(greeting()); // Введите имя...
+
+	function getInfiniteArgs() {
+		console.log(arguments) // Псевдмассив аргументов
+	}
+
+	getInfiniteArgs();
+	getInfiniteArgs(1,2,3);
+	getInfiniteArgs(1,2,3, "str", true, function() {});
+</script>
+
+</body>
+</html>

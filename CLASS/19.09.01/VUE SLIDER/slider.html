@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue slider</title>
+</head>
+<body>
+
+<div id="app">
+	<img v-bind:src="images[count]" width="100px" height="100px">
+	<br>
+	<button v-on:click="prev">prev</button>
+	<button v-on:click="next">next</button>
+</div>
+
+<script src="vue.min.js"></script>
+<script>
+	new Vue({
+		el: "#app",
+		data: {
+			count: 0,
+			images: ["img/1.jpg", "img/2.jpg", "img/3.png"]
+		},
+		methods: {
+			next: function() {
+				if(this.count >= this.images.length - 1) return false;
+				this.count++;
+			},
+			prev: function() {
+				if(this.count === 0) return false;
+				this.count--;
+			}
+		}
+	})
+</script>
+
+</body>
+</html>

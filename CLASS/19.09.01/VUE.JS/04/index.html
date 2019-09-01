@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js</title>
+</head>
+<body>
+
+<div id="app">
+	<div v-if="seen">Какой-то текст, который видно</div>
+	<div v-else>Ну или так</div>
+	
+	<div v-if="!seen">Инверсия</div>
+</div>
+
+<script src="vue.min.js"></script>
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			seen: true
+		}
+	})
+</script>
+
+</body>
+</html>

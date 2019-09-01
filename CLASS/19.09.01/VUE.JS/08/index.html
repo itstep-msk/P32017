@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue.js</title>
+</head>
+<body>
+
+<div id="app">
+	<input type="text" v-model="text" v-on:keydown.enter="addTask">
+	<button v-on:click="addTask">+</button>
+	<task v-for="(task, index) in tasks" v-bind:i="index" v-bind:item="task"></task>
+</div>
+
+<template id="task-template">
+	<div>{{ item }} <button v-on:click="remove(i)">X</button></div>
+</template>
+
+<script src="vue.min.js"></script>
+<script>
+	Vue.component("task", {
+		props: ["item", "i"],
+		template: "#task-template",
+		methods: {
+			remove: function(index) {
+				this.$root.tasks.splice(index, 1);
+			}
+		}
+	})
+
+	var app = new Vue({
+		el: "#app",
+		data: {
+			text: "",
+			tasks: []
+		},
+		methods: {
+			addTask: function() {
+				this.tasks.push(this.text);
+				this.text = "";
+			}
+		}
+	})
+</script>
+
+</body>
+</html>

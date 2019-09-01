@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Math</title>
+</head>
+<body>
+
+<script>
+	var nums = [];
+	var random;
+
+	var start = +(new Date);
+
+	while(nums.length < 10000) {
+		random = Math.floor(Math.random()*10000);
+		
+		// if(nums.indexOf(random) == -1) {
+		// 	nums.push(random);
+		// }
+		if(!nums.includes(random)) {
+			nums.push(random);
+		}
+	}
+
+	var end = +(new Date);
+
+	//console.log(nums)
+	console.log("time: " + (end - start) + "ms");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Web JS</title>
+</head>
+<body>
+<style>
+	.purple {
+		color: purple;
+	}
+</style>
+
+<div class="apple">apple: 10</div>
+<div class="apple">apple: 20</div>
+<div class="apple">apple: 30</div>
+
+<script>
+	//console.log(document)
+	//console.dir(document)
+	// document - наша верстка
+
+	var apple = document.querySelector(".apple");
+	var apples = document.querySelectorAll(".apple");
+
+	//console.log(apple)
+	//console.log(apples)
+
+	console.log(apple.innerHTML) // содержимое
+	console.log(apple.classList) // классы элемента
+
+	apple.innerHTML = "orange: 100"
+	apple.classList.add("purple");
+	apple.style.background = "aqua";
+	apple.style.fontSize = "30px";
+
+	apple.onclick = function() {
+		console.log("Уже не сработает")
+	}
+	apple.onclick = function() {
+		console.log("Кликнули по элементу")
+	}
+
+	apple.addEventListener("click", function(event) {
+		console.log("addEventListener click")
+		console.log(event)
+		this.innerHTML = Math.floor(Math.random() * 10);
+	})
+</script>
+
+</body>
+</html>

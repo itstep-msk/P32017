@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Object</title>
+</head>
+<body>
+
+<script>
+	var obj = {
+		x: 1,
+		y: 2,
+		z: {
+			size: {
+				w: 10,
+				h: [10,20]
+			}
+		},
+		greeting: function() {
+			return "Hello"
+		}
+	}
+	// console.log(obj) // {...}
+	// console.log(obj.x) // 1
+	// console.log(obj.z) //{size: {w: 10,h: [10,20]}}
+	// console.log(obj.z.size.h) // [10,20]
+	// console.log(obj.z.size.w) // 10
+	// console.log(obj.greeting()) // "Hello"
+	// console.log(obj.greeting) // function() {return "Hello"}
+
+	function getOption() {
+		return {
+			size: {
+				w: 10,
+				h: 20
+			}
+		}
+	}
+
+	//console.log(getOption());
+
+	var param = getOption();
+	//console.log(getOption().size.w); // 10
+	//console.log(param.size.w); // 10
+
+	var fruits = {
+		apple: 10,
+		orange: 20
+	}
+
+	for(key in fruits) {
+		//console.log(key) // apple, orange
+		//console.log(fruits[key]) // 10, 20
+	}
+
+	var a = 5;
+	var b = a;
+	a = 10;
+	//console.log(b) // 5
+
+	var vegetables = fruits; // копирования ссылки
+	//console.log(vegetables.apple) // 10;
+	fruits.apple = 100;
+	//console.log(vegetables.apple) // 100
+
+	// alert(fruits) // "[object Object]"
+	//console.log(fruits.toString()) // [object Object]
+	//console.log(fruits)
+	fruits.toString = function() { return  "А так можно было ? "};
+	// alert(fruits); // "А так можно было ? ";
+	//console.log([1,2,3].toString()) // 1,2,3
+
+	// Массивы
+	var array = [1,2,3,4,5];
+	console.log(array);
+	array.length = 10;
+	console.log(array) // [1, 2, 3, 4, 5, empty × 5]
+	array.length = 5;
+
+	array.push("apple");
+	// array.pop(); удаляет с конца
+	array.unshift("orange");
+	// array.shift(); удаляет с начала
+ 
+	console.log(array);
+	array.splice(2, 1); // Удалили "2"
+	console.log(array);
+
+	var cars = ["bwm", "audi", "mersedes"];
+
+	// function forEach(FuncForElement) {
+	// 	FuncForElement();
+	// }
+
+	cars.forEach(function(item, index, array) {
+		console.log(item, index)
+	})
+
+	var carLength = cars.map(function(item, index, array) {
+		return item.length
+	})
+	console.log(carLength) // [3, 4, 8]
+
+	var carFilter = cars.filter(function(item, index, array) {
+		if(item.length < 4) {
+			return true
+		}
+	})
+	console.log(carFilter) // ["bwm"]
+
+	var helloStr = "hello world";
+	console.log(helloStr.split(" ")) // ["hello", "world"]
+	console.log(helloStr.split("")) // ["h", "e", "l", "l", "o", " ", "w", "o", "r", "l", "d"]
+	console.log(helloStr.split("ello")) // ["h", " world"]
+	var arraySymbols = helloStr.split("ello");
+
+	console.log(arraySymbols) //  ["h", " world"]
+	console.log(arraySymbols.join("")) // "h world"
+	console.log(arraySymbols.join("-")) // "h world"
+	console.log(helloStr.split("").join("-")) // h-e-l-l-o- -w-o-r-l-d
+
+	console.log(cars.indexOf("bwm")) // 0
+	console.log(cars.indexOf("LADA")) // -1
+	cars["-1"] = "lada";
+	console.log(cars[cars.indexOf("gfhdsghdfjs")]) // "lada"
+
+	
+</script>
+
+</body>
+</html>
