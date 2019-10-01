@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>VELOBIKE</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f5cd46a9-cea7-4837-860a-097e0d31643c
+&lang=ru_RU" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        var apikey = "297d5eaff27a7c8c173650f3e0cc6106";
+        var url = "https://apidata.mos.ru/v1/datasets/"
+        var id = "916";
+        var features = "/features?api_key=";
+        var query = url + id + features + apikey;
+        var ajax = new XMLHttpRequest();
+
+        ymaps.ready(init);    
+        function init(){ 
+            var myMap = new ymaps.Map("map", {
+                center: [55.76, 37.64],
+                zoom: 10
+            });
+
+            ajax.open("GET", query);
+            ajax.send();
+            ajax.onreadystatechange = function() {
+                if(ajax.readyState === 4 && ajax.status === 200) {
+                    var results = JSON.parse(ajax.responseText).features;
+
+                    for(var i = 0; i < results.length; i++) {
+                        var x = results[i].geometry.coordinates[1];
+                        var y = results[i].geometry.coordinates[0];
+
+                        console.log(x)
+                        myMap.geoObjects.add(new ymaps.Placemark([x, y]));
+                    }
+                }
+            }
+
+           
+        }
+    </script>
+</head>
+
+<body>
+    <div id="map" style="width: 600px; height: 400px"></div>
+</body>

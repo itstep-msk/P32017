@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>ajax</title>
+</head>
+<body>
+
+<script>
+	var ajax = new XMLHttpRequest();
+
+	ajax.open("GET", "http://localhost/19.09.15/get.php?apple=10");
+
+	ajax.send();
+
+	ajax.onreadystatechange = function() {
+		if(ajax.readyState === 4 && ajax.status === 200) {
+			console.log(ajax.responseText);
+		}
+	}
+
+	ajax.open("POST", "http://localhost/19.09.15/post.php");
+
+	ajax.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	ajax.send("orange=20");
+</script>
+
+</body>
+</html>
