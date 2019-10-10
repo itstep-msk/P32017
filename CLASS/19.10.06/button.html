@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Button</title>
+</head>
+<body>
+
+<style>
+	.button {
+		display: inline-block;
+		padding: 10px 20px;
+		background: #28a745;
+		font-family: Arial;
+		color: white;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.button::selection {
+		background: none;
+	}
+
+	.circle {
+		width: 1px;
+	    height: 1px;
+	    background: #0f0;
+	    position: absolute;
+	    left: 0px;
+	    top: 0px;
+	    border-radius: 50%;
+	    opacity: 0.5;
+	    transform: scale(1);
+	    transition: all, .25s;
+	}
+
+	.circle-active {
+		transform: scale(200);
+		opacity: 0;
+	}
+</style>
+
+<div class="button">Button</div>
+
+<script>
+	var button = document.querySelector(".button");
+	var resolution = true;
+
+	button.addEventListener("click", handler);
+
+	function handler(e) {
+		if(!resolution) return false;
+
+		var circle = document.createElement("div");
+
+		circle.classList.add("circle");
+		circle.style.left = e.offsetX + "px";
+		circle.style.top = e.offsetY + "px";
+
+		button.appendChild(circle);
+
+		setTimeout(function() {
+			circle.classList.add("circle-active");
+			resolution = false;
+		}, 0)
+
+		setTimeout(function() {
+			circle.remove();
+			resolution = true;
+		}, 250)
+	}
+</script>
+
+</body>
+</html>

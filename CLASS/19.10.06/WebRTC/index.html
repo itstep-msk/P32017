@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>WebRTC</title>
+</head>
+<body>
+
+<script src="bugout.min.js"></script>
+<script>
+	var server = new Bugout("test");
+
+	server.on("connections", function(users) {
+		console.log("User connection");
+	})
+
+	server.on("message", function(address, message) {
+		console.log(message);
+	})
+
+	server.send("test message from user");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search word</title>
+</head>
+<body>
+
+<style>
+	.highlight {
+		background: orange;
+		display: inline-block;
+	}
+</style>
+
+<input class="query">
+<input type="submit" class="search">
+
+<div class="text">
+	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed imperdiet tortor at ex vestibulum interdum. Nam in nisi id dui ultricies dictum. In at iaculis urna. Nulla imperdiet euismod mattis. Aliquam molestie rhoncus sagittis. Sed lectus sapien, tempus vel euismod at, tristique pellentesque velit. Integer non neque dui. Donec efficitur purus ligula, ut finibus sapien ornare vel. In sodales risus neque, sit amet blandit sem mollis vel. Etiam porttitor, quam ac consectetur cursus, massa metus sodales enim, sit amet elementum ex tellus hendrerit metus. Nam libero elit, scelerisque vitae orci ut, dignissim laoreet dolor. Nam rutrum ex urna, non vehicula enim accumsan quis. Curabitur convallis, tortor id tincidunt fringilla, purus mi placerat nunc, cursus aliquet velit nulla quis erat. Sed euismod semper mauris, in facilisis libero lobortis quis.
+
+Curabitur blandit metus lorem. Vestibulum consequat, urna et suscipit sodales, tortor lectus laoreet quam, id luctus massa ex ut nunc. Proin enim magna, auctor ut faucibus suscipit, fringilla in est. Integer eleifend rhoncus iaculis. Nullam commodo augue lectus, a feugiat orci dapibus aliquet. Maecenas id efficitur libero, dictum suscipit tortor. Integer imperdiet leo nisi, quis consequat enim molestie a. Phasellus at magna nec tellus lacinia posuere a quis ante. Nullam quis gravida purus, nec feugiat orci.
+
+Quisque nec tortor nulla. Nullam nisi sapien, iaculis vel pharetra at, euismod eu nibh. Nunc euismod neque purus, nec iaculis purus ultrices non. Fusce luctus pharetra mauris quis porttitor. Nam justo est, laoreet ac dolor vitae, rutrum ullamcorper justo. Donec vulputate purus condimentum dapibus facilisis. Nullam ut quam odio. Praesent convallis nulla quis efficitur aliquam. In pellentesque tempus ligula. Fusce convallis ante vel eros tristique egestas. Curabitur quis ligula tempor, rhoncus nunc non, suscipit erat. Nulla dignissim, erat et porta scelerisque, ligula risus tincidunt orci, vel congue neque magna a sem.
+
+Phasellus dignissim, ante vel varius semper, orci magna sagittis nisl, sit amet scelerisque nisl quam ac sem. Quisque nisi ex, blandit ac suscipit sit amet, sodales vitae velit. Etiam pharetra sem non vestibulum fermentum. In ut sem rutrum, euismod sem a, euismod est. Fusce ultricies metus lorem, non accumsan mauris dictum vitae. Integer vehicula est erat. Proin commodo ipsum a fermentum cursus. Vivamus justo massa, facilisis nec bibendum nec, semper ut ligula. Nullam sed vehicula tellus.
+
+Maecenas nec aliquet odio. Nullam non magna in est accumsan vehicula. Suspendisse interdum ac ante rutrum pharetra. Proin cursus tincidunt consectetur. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam feugiat, eros a aliquet ultricies, urna nisi varius lorem, sagittis feugiat felis libero vitae eros. Sed commodo tincidunt vulputate. Fusce id neque nec elit iaculis dictum non tempus dui.
+</div>
+
+<script>
+	var text = document.querySelector(".text");
+	var query = document.querySelector(".query");
+	var search = document.querySelector(".search");
+	var sourceText = text.innerHTML;
+
+	query.addEventListener("input", handler);
+
+	function handler() {
+		if(query.value === "" || query.value === " ") return false;
+
+		var word = query.value;
+		var words = sourceText.split("");
+		var wordsSplice = [];
+		var start = 0;
+		var stop = 0;
+
+		for(var i = 0; i < words.length; i++) {
+			var substring = words.slice(i, i + word.length).join("");
+
+			if(substring === word) {
+				stop = i;
+
+				var part = words.slice(start, stop).join("");
+				var highlight = "<div class='highlight'>" + words.slice(i, i + word.length).join("") + "</div>";
+
+				wordsSplice.push(part);
+				wordsSplice.push(highlight);
+				start = stop + word.length;
+				stop = start;
+			}
+		}
+
+		if(start === stop && words.length > start) {
+			wordsSplice.push(words.splice(start).join(""))
+		}
+
+		text.innerHTML = wordsSplice.join("");
+	}
+</script>
+
+</body>
+</html>
