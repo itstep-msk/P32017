@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HOTEL</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="css/uikit.min.css">
+</head>
+<body>
+
+<style>
+	.room {
+		width: 70px;
+	    height: 70px;
+	    background-size: cover;
+	    background-position: 50%;
+	    border-radius: 50%;
+	}
+</style>
+
+<div class="uk-container uk-margin-large-top js-container"></div>
+
+<template id="card">
+	<div class="uk-card uk-card-default js-card uk-margin-bottom">
+	    <div class="uk-card-header">
+	        <div class="uk-grid-small uk-flex-middle" uk-grid>
+	            <div class="uk-width-auto">
+	                <div class="room js-room" style="background-image: url(img/room.jpg)"></div>
+	            </div>
+	            <div class="uk-width-expand">
+	                <h3 class="uk-card-title uk-margin-remove-bottom js-title">Title</h3>
+	                <div class="uk-text-meta uk-margin-remove-top js-date">
+	                	April 01, 2016
+	                </div>
+	                <div class="js-rating">
+	                	<span uk-icon="icon: star"></span>
+	                	<span uk-icon="icon: star"></span>
+	                	<span uk-icon="icon: star"></span>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	    <div class="uk-card-body">
+	        <p class="js-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+	    </div>
+	    <div class="uk-card-footer">
+	        <button class="uk-button uk-button-default js-button">Забронировать</button>
+	    </div>
+	</div>
+</template>
+
+<script src="js/uikit.min.js"></script>
+<script src="js/uikit-icons.min.js"></script>
+<script>
+	var container = document.querySelector(".js-container");
+	var templateCard = document.querySelector("#card");
+
+	getData("http://localhost/19.10.13/HOTEL/get_data.php", getDataHandler);
+	
+	function getData(url, callback) {
+		var ajax = new XMLHttpRequest();
+
+		ajax.onreadystatechange = function() {
+			if(ajax.status === 200 && ajax.readyState === 4) {
+				callback(ajax.responseText)
+				getData(url, callback);
+			}
+		}
+		ajax.open("GET", url);
+		ajax.send();
+	}
+
+	function getDataHandler(data) {
+		var rooms = JSON.parse(data)["rooms"];
+
+		container.innerHTML = "";
+
+		for(var i = 0; i < rooms.length; i++) {
+			setDataCard(rooms[i]);
+		}
+	}
+
+	function setDataCard(data) {
+		var card = templateCard.content.querySelector(".js-card");
+		card = card.cloneNode(true);
+		var title = card.querySelector(".js-title");
+		var date = card.querySelector(".js-date");
+		var desc = card.querySelector(".js-desc");
+		var button = card.querySelector(".js-button");
+
+		title.innerHTML = data.title;
+		date.innerHTML = data.date;
+		desc.innerHTML = data.desc;
+
+		if(data.booked === "true") {
+			button.setAttribute("disabled", "true");
+		} else {
+			button.removeAttribute("disabled");
+		}
+
+		container.appendChild(card);
+	}
+</script>
+</body>
+</html>
