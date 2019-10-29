@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slider</title>
+	<link rel="stylesheet" href="css/bubblegum.css">
+</head>
+<body>
+
+<div class="js-slider bubblegum"></div>
+<div class="js-test-slider-01 bubblegum"></div>
+<button class="prev">PREV</button>
+<button class="next">NEXT</button>
+
+<script src="js/bubblegum.js"></script>
+<script>
+	var prev = document.querySelector(".prev");
+	var next = document.querySelector(".next");
+	var slider = new Bubblegum({
+		el: ".js-slider",
+		images: ["img/1.jpg", "img/1.jpg", "img/1.jpg"]
+	})
+	// var testSlider = new Bubblegum({
+	// 	el: ".js-test-slider-01",
+	// 	images: ["img/1.jpg", "img/1.jpg", "img/1.jpg"]
+	// })
+
+	next.addEventListener("click", slider.next.bind(slider))
+	prev.addEventListener("click", slider.prev.bind(slider))
+</script>
+
+</body>
+</html>

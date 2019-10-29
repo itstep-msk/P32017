@@ -1,0 +1,36 @@
+{
+	"goods": [
+		{
+			"caption": "Samsung Galaxy A30s 32Gb (чёрный)",
+			"price": "15 990 P"
+		},
+		{
+			"caption": "Samsung Galaxy A30s 32Gb (белый)",
+			"price": "25 990 P"
+		},
+		{
+			"caption": "Samsung Galaxy A30s 32Gb (розовый)",
+			"price": "35 990 P"
+		},
+		{
+			"caption": "Samsung Galaxy A30s 32Gb (красный)",
+			"price": "45 990 P"
+		},
+		{
+			"caption": "iPhone 32Gb (чёрный)",
+			"price": "55 990 P"
+		},
+		{
+			"caption": "iPhone 64Gb (белый)",
+			"price": "65 990 P"
+		},
+		{
+			"caption": "iPhone 128Gb (розовый)",
+			"price": "75 990 P"
+		},
+		{
+			"caption": "iPhone 256Gb (красный)",
+			"price": "85 990 P"
+		}
+	]
+}

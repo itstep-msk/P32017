@@ -1,0 +1,11 @@
+body {
+	margin: 0;
+}
+
+.bubblegum {
+    overflow: hidden;
+}
+
+.bubblegum .container {
+	transition: all, .25s;
+}

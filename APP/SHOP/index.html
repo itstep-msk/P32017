@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Shop</title>
+	<link rel="stylesheet" href="css/uikit.min.css">
+	<meta charset="utf-8">
+</head>
+<body>
+
+<style>
+	.button-success {
+		background-color: #28a745;
+	}
+
+	.button-success:focus {
+		background-color: #28a745;
+	}
+
+	.button-success:hover {
+		background-color: #218838;
+	}
+
+	.button-success:active {
+		background-color: #1e7e34;
+	}
+</style>
+
+<div class="uk-container">
+	<div class="js-goods" uk-grid></div>
+	<div class="uk-text-center">
+		<button class="uk-button uk-button-primary uk-margin-large-top js-load-more">Еще</button>
+	</div>
+</div>
+
+<template id="card">
+	<div class="uk-card uk-card-default uk-width-1-4 uk-padding">
+		<div class="uk-card-header uk-text-center">
+			<img src="img/goods_01.jpg">
+		</div>
+		<div class="uk-card-body uk-height-medium">
+			<div class="uk-text-center js-caption">Samsung Galaxy A30s 32Gb (чёрный)</div>
+			<div class="uk-text-center uk-text-bold uk-text-lead uk-margin-top js-price">15 990 P</div>
+		</div>
+		<div class="uk-card-footer uk-text-center">
+			<button class="uk-button uk-button-primary button-success js-button">Купить</button>
+		</div>
+	</div>
+</template>
+
+<script src="js/uikit.min.js"></script>
+<script src="js/goods.js"></script>
+<script src="js/request.js"></script>
+<script>
+	var goods = new Goods(".js-goods", "#card");
+	var request = new Request();
+	var loadMore = document.querySelector(".js-load-more");
+
+	request.send("http://localhost/19.10.27/backend/index.php", goods.range, goods.add.bind(goods));
+
+	loadMore.addEventListener("click", loadMoreHandler);
+
+	function loadMoreHandler() {
+		request.send("http://localhost/19.10.27/backend/index.php", goods.range, goods.add.bind(goods));
+	}
+</script>
+</body>
+</html>
