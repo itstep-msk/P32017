@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>hashchange</title>
+</head>
+<body>
+
+<a href="hashchange.html#apple">apple</a>
+<a href="hashchange.html#orange">orange</a>
+
+<script>
+	window.addEventListener("hashchange", function(){
+		console.log(window.location.hash);
+	})
+</script>
+
+</body>
+</html>

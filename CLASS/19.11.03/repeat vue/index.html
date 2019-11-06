@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Vue repeat</title>
+</head>
+<body>
+
+<div id="app">
+	{{ message }}
+	<br>
+	{{ getMessage() }}
+	<div v-bind:title="message">Наведи на меня</div>
+	<div :title="message">Наведи на меня</div>
+	<div v-on:click="greeting">Кликни</div>
+	<div @click="greeting">Кликни</div>
+	<br>
+	<div v-for="car in cars">{{ car }}</div>
+	<br>
+	<div v-for="(car, index) in cars">{{ index }} - {{ car }}</div>
+	<br>
+	<ul>
+		<li v-for="car in cars">{{ car.toUpperCase() }}</li>
+	</ul>
+	<div v-if="cars.length > 1">Показывается</div>
+	<div v-else>Скрыто</div>
+	<div v-if="false">Скрыто</div>
+	<div v-show="false">Скрыто</div>
+	<br>
+	<auto v-for="car in cars" :item="car"></auto>
+
+	<input v-model="message">
+	{{ message }}
+</div>
+
+<script src="vue.min.js"></script>
+<script>
+	Vue.component("auto", {
+		props: ["item"],
+		template: "<div>Hello from auto - {{ item }}</div>"
+	})
+
+	var app = new Vue({
+		el: "#app",
+		data: {
+			message: "Hello",
+			cars: ["bmw", "audi", "mersedes"]
+		},
+		methods: {
+			getMessage: function() {
+				return "Hello from methods"
+			},
+			greeting() {
+				console.log("Приветствие")
+			}
+		},
+		watch: {
+			cars() {
+				console.log("в cars добавился: " + this.cars[this.cars.length - 1])
+			}
+		},
+		beforeCreate() {
+			console.log("beforeCreate")
+		},
+		beforeUpdate() {
+			console.log("beforeUpdate")
+		},
+		beforeMount() {
+			console.log("beforeMount")
+		}
+	})
+</script>
+</body>
+</html>

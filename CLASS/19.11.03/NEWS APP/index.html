@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>NEWS APP</title>
+	<link rel="stylesheet" href="css/uikit.min.css">
+</head>
+<body>
+
+<div id="app" class="uk-container">
+	<nav class="uk-navbar-container" uk-navbar>
+	    <div class="uk-navbar-left">
+	        <ul class="uk-navbar-nav">
+	            <li>
+	            	<router-link to="/">Главная</router-link>
+	            </li>
+	             <li>
+	            	<router-link to="/news">Новости</router-link>
+	            </li>
+	        </ul>
+	    </div>
+	</nav>
+
+    <router-view></router-view>
+</div>
+
+<template id="template-home">
+	<div>Главная</div>
+</template>
+
+<template id="template-news">
+	<div>
+		<div v-for="(item, index) in this.$root.news" class="uk-card uk-card-default uk-card-body uk-margin-bottom">
+		    <h3 class="uk-card-title">{{ item.caption }}</h3>
+		    <p>{{ item.desc }}</p>
+
+		    <router-link :to="'/news/' + index" class="uk-button uk-button-default uk-margin-top">Читать далее</router-link>
+		    <router-link :to="'/news/' + index + '/edit/'" class="uk-button uk-button-default uk-margin-top">Редактировать</router-link>
+		</div>
+	</div>
+</template>
+
+<template id="template-news-full">
+	<div>
+		<h1>{{ this.caption }}</h1>
+		<p>
+			{{ this.getDate() }}
+			<a href="#" uk-icon="heart" @click.prevent="likeUpdate"></a>
+			<span v-if="likes">{{ this.likes }}</span>
+		</p>
+		<p>{{ this.desc }}</p>
+	</div>
+</template>
+
+<template id="template-news-edit">
+	<div>
+		<input type="text" class="uk-input uk-margin-top" v-model="caption">
+		<textarea class="uk-textarea uk-margin-top uk-height-small" v-model="desc"></textarea>
+		<button @click="update" class="uk-button uk-button-default uk-margin-top">Сохранить</button>
+	</div>
+</template>
+
+<script src="js/uikit.min.js"></script>
+<script src="js/uikit-icons.min.js"></script>
+<script src="vue.min.js"></script>
+<script src="vue-router.js"></script>
+<script>
+	var home = { template: "#template-home" }
+	var news = { template: "#template-news" }
+	var newsFull = Vue.component("news-full", {
+		data() {
+			return {
+				caption: this.$root.news[this.$route.params.id].caption,
+				desc: this.$root.news[this.$route.params.id].desc,
+				dataRaw: this.$root.news[this.$route.params.id].date,
+				likes: this.$root.news[this.$route.params.id].likes
+			}
+		},
+		methods: {
+			getDate() {
+				var date = new Date(this.dataRaw);
+				var monthList = ["Январь", "Февраль", "Март", "Апрель", "Май", "Июнь", "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"];
+
+				return `${monthList[date.getMonth()]}, ${date.getDate()} ${date.getFullYear()}`;
+			},
+			likeUpdate() {
+				this.$root.news[this.$route.params.id].likes++;
+				this.likes = this.$root.news[this.$route.params.id].likes;
+			}
+		},
+		template: "#template-news-full" 
+	})
+	var newsEdit = Vue.component("news-edit", {
+		data() {
+			return {
+				caption: this.$root.news[this.$route.params.id].caption,
+				desc: this.$root.news[this.$route.params.id].desc,
+				id: this.$route.params.id
+			}
+		},
+		methods: {
+			update() {
+				this.$root.news[this.id].caption = this.caption;
+				this.$root.news[this.id].desc = this.desc;
+			}
+		},
+		template: "#template-news-edit"
+	})
+
+	var routes = [
+	  { path: '/', component: home },
+	  { path: '/news', component: news },
+	  { path: '/news/:id', component: newsFull },
+	  { path: '/news/:id/edit', component: newsEdit }
+	]
+
+	var router = new VueRouter({
+		routes: routes
+	})
+
+	var app = new Vue({
+		el: "#app",
+		data: {
+			news: [
+				{
+					caption: "Маршруты нескольких автобусов изменятся из-за праздничных мероприятий",
+					desc: "Сразу несколько автобусов изменят маршрут в ближайшие дни из-за праздничных мероприятий. Об этом говорится на портале мэра и правительства Москвы.",
+					date: "10/16/2018",
+					likes: 0
+				},
+				{
+					caption: "Redmi представил дешевый 40-дюймовый смарт-телевизор",
+					desc: "На рынке появился 40-дюймовый телевизор с функцией smart-TV. Он продается по цене ниже большей части бюджетных смартфонов. Этот девайс представила китайская компания Redmi.",
+					date: "10/17/2018",
+					likes: 0
+				},
+				{
+					caption: "Новый Kia Optima впервые засняли без камуфляжа",
+					desc: "Корейский седан KIA Optima нового поколения готовится к дебюту. Новинку, пережившую радикальные изменения в дизайне, на днях заметили на рекламной съемке без какого-либо камуфляжа.",
+					date: "10/19/2018",
+					likes: 0
+				}
+			]
+		},
+		router: router
+	})
+</script>
+</body>
+</html>
