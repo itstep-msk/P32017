@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search</title>
+	<link rel="stylesheet" href="css/uikit.min.css">
+</head>
+<body>
+
+<div id="app" class="uk-container">
+	<input class="uk-input">
+	<div uk-grid class="uk-margin-remove-left">
+		<div class="uk-card uk-card-default uk-card-body uk-width-1-4" v-for="good in goods">
+		    <h3 class="uk-card-title">{{ good.name }}</h3>
+		    <p>{{ good.price }}</p>
+		    <button class="uk-button uk-button-primary">Купить</button>
+		</div>
+	</div>
+</div>
+
+<script src="js/uikit.min.js"></script>
+<script src="vue.js"></script>
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			goods: [
+				{
+					name: "Кирпичи",
+					price: 19900
+				},
+				{
+					name: "Огонь",
+					price: 21900
+				},
+				{
+					name: "Вода",
+					price: 560
+				},
+				{
+					name: "Бумага",
+					price: 29
+				}
+			]
+		}
+	})	
+</script>
+</body>
+</html>

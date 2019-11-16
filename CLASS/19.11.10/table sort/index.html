@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Table sort</title>
+	<link rel="stylesheet" href="css/uikit.min.css">
+</head>
+<body>
+
+<div id="app" class="uk-container">
+	<table class="uk-table uk-table-divider">
+	    <thead>
+	        <tr>
+	            <th>
+	            	ID
+	            	<span uk-icon="icon: chevron-down" @click="sort('id', 1)"></span>
+	            	<span uk-icon="icon: chevron-up" @click="sort('id', -1)"></span>
+	            </th>
+	            <th>
+	            	Название
+	            	<span uk-icon="icon: chevron-down" @click="sort('name', 1)"></span>
+	            	<span uk-icon="icon: chevron-up" @click="sort('name', -1)"></span>
+	            </th>
+	            <th>
+	            	Цена
+	            	<span uk-icon="icon: chevron-down" @click="sort('price', 1)"></span>
+	            	<span uk-icon="icon: chevron-up" @click="sort('price', -1)"></span>
+	            </th>
+	        </tr>
+	    </thead>
+	    <tbody>
+	        <tr v-for="good in goods">
+	            <td>{{ good.id }}</td>
+	            <td>{{ good.name }}</td>
+	            <td>{{ good.price }}</td>
+	        </tr>
+	    </tbody>
+	</table>
+</div>
+
+<script src="js/uikit.min.js"></script>
+<script src="js/uikit-icons.min.js"></script>
+<script src=" vue.js"></script>
+<script>
+	var app = new Vue({
+		el: "#app",
+		data: {
+			goods: [
+				{
+					id: 0,
+					name: "Кирпичи",
+					price: 19900
+				},
+				{
+					id: 1,
+					name: "Огонь",
+					price: 21900
+				},
+				{
+					id: 2,
+					name: "Вода",
+					price: 560
+				},
+				{
+					id: 3,
+					name: "Бумага",
+					price: 29
+				}
+			]
+		},
+		methods: {
+			sort(type, direction) {
+				this.goods.sort((goodA, goodB) => {
+					if(goodA[type] > goodB[type]) {
+						return -1 * direction;
+					} else {
+						return 1 * direction;
+					}
+				})
+			}
+		}
+	})	
+</script>
+</body>
+</html>
