@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>BattleShip</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+
+<div class="app"></div>
+
+<script src="js/BattleShipMap.js"></script>
+<script src="js/BattleShipGame.js"></script>
+<script src="js/BattleShipBot.js"></script>
+<script>
+	var map = new BattleShipMap(10, 10) ;
+	var game = new BattleShipGame(map.getMap(), map.getShips(), ".app");
+	var bot = new BattleShipBot(10, 10);
+	var app = document.querySelector(".app");
+
+	//bot.move(game.strike.bind(game));
+	app.addEventListener("click", handler);
+
+	function handler(e) {
+		if(e.target.classList.contains("cell")) {
+			var i = +e.target.getAttribute("i");
+			var j = +e.target.getAttribute("j");
+			var result = game.strike(i, j);
+
+			console.log(result)
+		}
+	}
+</script>
+</body>
+</html>

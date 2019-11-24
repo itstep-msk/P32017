@@ -1,0 +1,81 @@
+body {
+	margin: 0;
+}
+
+.app {
+    display: flex;
+    flex-wrap: wrap;
+    width: 500px;
+    margin: 0 auto;
+    margin-top: 100px;
+    border: 1px solid #b4b4ff;
+}
+
+.cell {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #b4b4ff;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.cell:hover {
+    border: 2px solid #40bf44;
+}
+
+.ship {
+    background: black;
+    border: 2px solid #00f;
+    background: rgba(0,0,255,.05);
+    overflow: hidden;
+}
+
+.destroyed {
+   border-color: red;
+}
+
+.destroyed:hover {
+    border-color: red;
+}
+
+.destroyed:before, .destroyed:after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 200%;
+    background: red;
+    position: absolute;
+    left: -20px;
+    top: 25px;
+}
+
+.destroyed:before {
+    transform: rotate(45deg);
+}
+
+.destroyed:after {
+    transform: rotate(-45deg);
+    left: -25px;
+}
+
+.miss {
+    background: #f2f4f8;
+}
+
+.miss:hover {
+    border: 1px solid #b4b4ff;
+}
+
+.miss:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 4px;
+    width: 4px;
+    background: #333;
+    border-radius: 50%;
+    margin-top: -2px;
+    margin-left: -2px;
+}
